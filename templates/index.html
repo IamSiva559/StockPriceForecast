@@ -1,0 +1,97 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+<body>
+  <script type="text/javascript">
+    function CheckSymbol(val)
+    {
+    var element=document.getElementById('nm');
+    if(val=='Other')
+      element.removeAttribute("disabled");
+    else  
+      element.setAttribute("disabled", "disabled");
+       
+    }
+  </script>
+
+<style>
+.title {
+  border: 5px outset red;
+  background-color: lightblue;
+  text-align: center;
+  background-image: url('static/stock_market.jpg');
+
+}
+.prediction {
+  
+  background-color: lightgreen;
+  text-align: center;
+  
+}
+.bottom
+{
+  background-image: url('static/stock_market.jpg');
+  align-items: center;
+  font-size: 15;
+  height: 40px;
+}
+
+</style>
+
+
+<div class="title">
+    <div class="jumbotron text-center">
+        <h1><b>Stock Price Prediction<b></h1>
+    </div>
+</div>
+
+<!-- Login  -->
+<div class="prediction">
+  <div class="container">
+    <div class="log_in_logo text-center"> <img style="height: 200px" src="{{url_for('static', filename='tile7.png')}}" </div>
+    <div class="log_in_box">
+      <form class="login" action = "{{ url_for('insertintotable') }}" method = "POST">
+        <div class="login_title">
+          <h2>PLEASE ENTER A STOCK SYMBOL</h2>
+        </div>
+        <select name = "nm" onchange='CheckSymbol(this.value);'>
+          <option value="RELIANCE.NS">RELIANCE.NS</option>
+          <option value="TATAMOTORS.NS">TATAMOTORS.NS</option>
+          <option value="ADANIGREEN.NS">ADANIGREEN.NS</option>
+          <option value="TSLA">TSLA</option>
+          <option value="GOOGL">GOOGL</option>
+          <option value="Other">Other</option>
+        </select>
+        Other:
+        <input type="text" name="nm" id="nm" disabled="disabled" />
+        <br/>
+        <br/>
+        <div class="form-group">
+          <button class="btn btn-login">PREDICT THE FUTURE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% if not_found %}
+<div class="alert alert-danger" style="color: red;" role="alert">
+    Stock {{symbol}} Not Found. Please Enter a Valid Stock Symbol
+</div>
+{% endif %}
+
+<div class="bottom">
+  <p style="font-size: 20; color: red; text-align: center;">
+   Siva Tirri 
+  </p>
+</div>
+{% endblock %}
+
+
+
+
+
+</body>
+
+
+

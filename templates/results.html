@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        document.getElementsByClassName("trend_chart") = {{stock_symbol}};
+        document.getElementsByClassName("live_chart") = {{stock_symbol}};
+        document.getElementsByClassName("sentimet_chart") = {{stock_symbol}};
+    </script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo-2.png') }}">
+    <title>Stock Prediction</title>
+    
+    <link href="{{ url_for('static', filename='owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='owl.theme.default.min.css') }}" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min-RES.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='helper.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style-RES.css') }}" rel="stylesheet">
+
+<![endif]-->
+</head>
+<div class="left-sidebar">
+            <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebar-menu">
+                    <li class="nav-devider"></li>
+                    <br>
+                    <li class="nav-label"><a href="http://127.0.0.1:5000">HOME</a></li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+            <!-- End Sidebar scroll-->
+</div>
+
+<body class="header-fix fix-sidebar">
+    
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">TODAY'S {{quote}} STOCK DATA</h3> </div>
+                <div class="col-md-7 align-self-center">
+                    
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-bag f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{open_s}}</h2>
+                                    <p class="m-b-0 text-white">OPEN</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <div class="card bg-warning p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-comment f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{high_s}}</h2>
+                                    <p class="m-b-0 text-white">HIGH</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-vector f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{low_s}}</h2>
+                                    <p class="m-b-0 text-white">LOW</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-danger p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-location-pin f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{close_s}}</h2>
+                                    <p class="m-b-0 text-white">CLOSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-warning p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-comment f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{adj_close}}</h2>
+                                    <p class="m-b-0 text-white">ADJ CLOSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-bag f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{vol}}</h2>
+                                    <p class="m-b-0 text-white">VOLUME</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4> TODAY {{quote}} STOCK PRICES</h4>
+                            </div>
+                            
+                            <div class="live_charts">
+                                <img class="live_chart" src="{{url_for('static',filename= quote+'_livedata.png')}}" id = "live_chartss"/>
+                            </div>
+                            
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                    
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>STOCK TREND PREDICTIONS</h4>
+                            </div>
+                            
+                            <div class="sales-chart">
+                                <img class="trend_chart" src="{{url_for('static',filename= quote+'_arima.png')}}" />
+                            </div>
+          
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                
+                    <!-- ARIMA PRED -->
+                    <div class="col-md-4">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-vector f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{arima_pred}}</h2>
+                                    <p class="m-b-0 text-white">TOMORROW'S {{quote}} CLOSING PRICE BY ARIMA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>RECENT TWEETS AND NEWS ABOUT {{quote}} </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tweets</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          
+                                            <tr>
+                                                <td>
+                                                    <div class="round-img">
+                                                        <a href="https://twitter.com/"><img style="padding: 0px,0px,0px,0px;width:70px;height: 70px;" src="{{url_for('static', filename='twitter-logo.png')}}" alt=""></a>
+                                                    </div>
+                                                </td>
+                                                <td>{% for i in range(0,12) %}
+                                          {{tw_list[i]}}<br>
+                                          {% endfor %}</td>
+                                                <td><span></span></td>
+                                                <td><span></span></td>
+                                                <td><span class="badge badge-success"></span></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>SENTIMENT ANALYSIS FOR {{quote}} TWEETS</h4>
+                            </div>
+                            {% if not_connected %}
+                            <div class="alert alert-danger" style="color: red;" role="alert">
+                                Twitter connection issue, Check the connections
+                            </div>
+                            {% endif %}
+                            
+                            <div class="sentimet_chart_l">
+                                <img class="sentimet_chart" src="{{url_for('static',filename= quote+'_sa.png')}}" id = "sentimet_charts"/>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>PREDICTED {{quote}} PRICE FOR THE NEXT 7 DAYS</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Close</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <a href="https://finance.yahoo.com/quote/{{quote}}"><img style="padding: 0px,0px,0px,0px;width:120px;height: 120px;" src="{{url_for('static', filename='fore.png')}}" alt=""></a>
+                                                    </div>
+                                                </td>
+                                                <td>{% for row in forecast_set %}
+                                          {{row}}<br>
+                                          {% endfor %}</td>
+                                                <td><span></span></td>
+                                                <td><span></span></td>
+                                                <td><span class="badge badge-success"></span></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                    <!-- OVERALL POLARITY -->
+                    <div class="col-md-4">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-location-pin f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{tw_pol}}</h2>
+                                    <p class="m-b-0 text-white">OVERALL TWEETS POLARITY</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-comment f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white" style="text-align: left;">{{decision}}</h2>
+                                    <p class="m-b-0 text-white">RECOMMENDATION</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                
+                <!-- End PAge Content -->
+            </div>
+            <!-- End Container fluid  -->
+            
+            <!-- End footer -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="/static/jquery-RES.min.js?version = 1.0"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/static/popper.min.js?version = 1.0"></script>
+    <script src="/static/bootstrap-RES.min.js?version = 1.0"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/static/jquery.slimscroll.js?version = 1.0"></script>
+    <!--Menu sidebar -->
+    <script src="/static/sidebarmenu.js?version = 1.0"></script>
+    <!--stickey kit -->
+    <script src="/static/sticky-kit.min.js?version = 1.0"></script>
+    
+    
+    <script src="/static/d3.min.js?version = 1.0"></script>
+    <script src="/static/topojson.js?version = 1.0"></script>
+    <script src="/static/datamaps.world.min.js?version = 1.0"></script>
+    <script src="/static/datamap-init.js?version = 1.0"></script>
+
+    <script src="/static/jquery.simpleWeather.min.js?version = 1.0"></script>
+    <script src="/static/weather-init.js?version = 1.0"></script>
+    <script src="/static/owl.carousel.min.js?version = 1.0"></script>
+    <script src="/static/owl.carousel-init.js?version = 1.0"></script>
+
+    <!-- Echart -->
+    <script src="/static/echarts.js?version = 1.0"></script>
+    <script src="/static/dashboard1-init.js?version = 1.0"></script>
+    <!--Custom JavaScript -->
+    <script src="/static/custom.min.js?version = 1.0"></script>
+
+
+
+</body>
+
+</html>
